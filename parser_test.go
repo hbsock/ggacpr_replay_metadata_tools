@@ -17,13 +17,9 @@ func TestGetReplayHeader(t *testing.T) {
 
     defer file.Close()
 
-    header, err := GetReplayHeader(file)
+    _, err := GetReplayHeader(file)
     if err != nil {
         t.Fatalf("%q", err)
-    }
-
-    if header.Metadata_size != 110 {
-        t.Fatalf("This test file's metadata size should be 110 bytes.")
     }
 }
 
