@@ -19,6 +19,17 @@ type ReplayRecordingDate struct {
     Hour uint8
     Minute uint8
     Second uint8
+    _ [1]byte //To skip to the 0x22 byte
+}
+
+
+type ReplayMetaData struct {
+    Header ReplayHeader
+    Date ReplayRecordingDate
+    Player1SteamID uint64
+    Player2SteamID uint64
+    Player1NameUTF8 [32]byte
+    Player2NameUTF8 [32]byte
 }
 
 
@@ -49,3 +60,14 @@ func GetReplayRecordingDate(r io.Reader) (ReplayRecordingDate, error) {
 
     return recording_date, nil
 }
+
+func GetReplayMetaData(r io.Reader) (ReplayMetaData, error) {
+    metadata := ReplayMetaData{}
+    err := binary.Read(r, binary.LittleEndian, &metadata)
+    if err != nil {
+        return metadata, err
+    }
+
+    return metadata, nil
+}
+

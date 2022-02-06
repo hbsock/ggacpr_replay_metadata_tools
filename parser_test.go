@@ -30,8 +30,6 @@ func TestGetReplayRecordingDate(t *testing.T) {
 
     GetReplayHeader(file)
 
-    t.Log(file)
-
     recording_date, err := GetReplayRecordingDate(file)
     if err != nil {
         t.Fatalf("%q", err)
@@ -50,4 +48,20 @@ func TestGetReplayRecordingDate(t *testing.T) {
         t.Logf("Expected date was %+q but read %+q", expected_date, recording_date)
         t.Fatalf("Expected date was %+v but read %+v", expected_date, recording_date)
     }
+}
+
+
+func TestGetReplayMetaData(t *testing.T) {
+    file, _ := os.Open(TEST_FILE_PATH)
+    defer file.Close()
+
+    metadata, err := GetReplayMetaData(file)
+    if err != nil {
+        t.Fatalf("%q", err)
+    }
+
+    t.Log(metadata)
+    t.Log( string(metadata.Player1NameUTF8[:]) )
+
+    t.Fatal("Fail it!")
 }
