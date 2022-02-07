@@ -61,13 +61,27 @@ func TestGetReplayMetaData(t *testing.T) {
     }
 
     expected_content := ReplayMetaDataContent{
-        Player1SteamID: 76561198008085514,
-        Player2SteamID: 76561198011058687,
-        Player1Character: RO,
-        Player2Character: JA,
+        P1SteamID: 76561198008085514,
+        P2SteamID: 76561198011058687,
+        P1Character: RO,
+        P2Character: JA,
+        ExtraFlag: 0,
+        SingleOrTeamFlag: 1,
+        IsPlusRFlag: 0,
+        TimezoneBiasInSec: 18000,
+        P1RoundsWon: 2,
+        P2RoundsWon: 0,
+        ProblemBitmask: 0,
+        Ping: 124,
+        MatchDurationInFrames: 6810,
+        P1Score: 4,
+        P2Score: 0,
+        P1Rank: 5,
+        P2Rank: 3,
+        WinnerSide: 1,
     }
-    copy(expected_content.Player1NameUTF8[:], []byte("Klantsmurfen"))
-    copy(expected_content.Player2NameUTF8[:], []byte("Nibnab"))
+    copy(expected_content.P1NameUTF8[:], []byte("Klantsmurfen"))
+    copy(expected_content.P2NameUTF8[:], []byte("Nibnab"))
 
     //t.Logf("Sol value is %d", SO)
 

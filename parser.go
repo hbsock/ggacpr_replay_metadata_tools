@@ -52,12 +52,26 @@ const (
 )
 
 type ReplayMetaDataContent struct {
-    Player1SteamID uint64
-    Player2SteamID uint64
-    Player1NameUTF8 [32]byte
-    Player2NameUTF8 [32]byte
-    Player1Character Character
-    Player2Character Character
+    P1SteamID uint64
+    P2SteamID uint64
+    P1NameUTF8 [32]byte
+    P2NameUTF8 [32]byte
+    P1Character Character
+    P2Character Character
+    ExtraFlag uint8 // value is 1 if extra options were modified, or EX/SP/GG characters were used, or KL/JU in the original AC, 0 otherwise
+    SingleOrTeamFlag uint8 // 1 = single, 2 = team
+    IsPlusRFlag uint8 // 0 = +R, 1 = AC
+    TimezoneBiasInSec int32 //
+    P1RoundsWon uint8
+    P2RoundsWon uint8
+    ProblemBitmask uint8 // 0b1 = unfinished match 0b10 = disconnect 0b100 = desync
+    Ping uint8
+    MatchDurationInFrames uint32
+    P1Score uint8
+    P2Score uint8
+    P1Rank uint8
+    P2Rank uint8
+    WinnerSide uint8 // 1 = P1, 2 = P2, 3 = draw
 }
 
 
