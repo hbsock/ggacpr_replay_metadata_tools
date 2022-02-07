@@ -1,11 +1,15 @@
 package parser
 
 import (
+	"hbsock/ggacpr_replay_metadata_tools/internal/projectpath"
 	"os"
+	"path/filepath"
 	"testing"
 )
 
-const TEST_FILE_PATH = "../test_files/METADATA_ONLY_test_replay_20220127_1829_Klantsmurfen_RO_vs_Nibnab_JA.ggr"
+var (
+	TEST_FILE_PATH = filepath.Join(projectpath.Root, "test_files/METADATA_ONLY_test_replay_20220127_1829_Klantsmurfen_RO_vs_Nibnab_JA.ggr")
+)
 
 func TestGetReplayHeader(t *testing.T) {
 	/*
