@@ -60,8 +60,16 @@ func TestGetReplayMetaData(t *testing.T) {
         t.Fatalf("%q", err)
     }
 
-    t.Log(metadata)
-    t.Log( string(metadata.Player1NameUTF8[:]) )
+    expected_content := ReplayMetaDataContent{
+        Player1SteamID: 76561198008085514,
+        Player2SteamID: 76561198011058687,
+    }
+    copy(expected_content.Player1NameUTF8[:], []byte("Klantsmurfen"))
+    copy(expected_content.Player2NameUTF8[:], []byte("Nibnab"))
 
-    t.Fatal("Fail it!")
+    t.Log(metadata)
+
+    if expected_content != metadata.Content {
+        t.Fatalf("Expected content %v did not match the actual content %v", expected_content, metadata.Content)
+    }
 }

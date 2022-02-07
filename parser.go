@@ -22,14 +22,19 @@ type ReplayRecordingDate struct {
     _ [1]byte //To skip to the 0x22 byte
 }
 
-
-type ReplayMetaData struct {
-    Header ReplayHeader
-    Date ReplayRecordingDate
+type ReplayMetaDataContent struct {
     Player1SteamID uint64
     Player2SteamID uint64
     Player1NameUTF8 [32]byte
     Player2NameUTF8 [32]byte
+
+}
+
+
+type ReplayMetaData struct {
+    Header ReplayHeader
+    Date ReplayRecordingDate
+    Content ReplayMetaDataContent
 }
 
 
