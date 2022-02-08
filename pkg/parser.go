@@ -1,4 +1,4 @@
-package parser
+package metadata
 
 import (
 	"encoding/binary"
@@ -117,3 +117,5 @@ func GetReplayMetaData(r io.Reader) (ReplayMetaData, error) {
 
 	return metadata, nil
 }
+
+

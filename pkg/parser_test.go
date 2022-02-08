@@ -1,4 +1,4 @@
-package parser
+package metadata
 
 import (
 	"hbsock/ggacpr_replay_metadata_tools/internal/projectpath"
