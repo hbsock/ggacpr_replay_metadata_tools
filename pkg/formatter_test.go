@@ -1,8 +1,9 @@
 package metadata
 
 import (
-	"testing"
 	"reflect"
+	"testing"
+	"time"
 )
 
 func _GetTestData() ReplayMetaData {
@@ -40,10 +41,25 @@ func _GetTestData() ReplayMetaData {
 	copy(content.P2NameUTF8[:], []byte("Nibnab"))
 
 	return ReplayMetaData{
-		Date: date,
+		Date:    date,
 		Content: content,
 	}
 
+}
+
+func TestMetaDataToDate(t *testing.T) {
+	metadata := _GetTestData()
+
+	v_time := metadata.GetDate()
+	t.Logf("%v", v_time)
+
+	// 2022-01-27 18:29:58 -0500
+	v_timezone := time.FixedZone("EST", -18000)
+	v_expected_time := time.Date(2022, 1, 27, 18, 29, 58, 0, v_timezone)
+
+	if !v_time.Equal( v_expected_time ) {
+		t.Fatalf("Time %v did not match the expected time %v", v_time, v_expected_time)
+	}
 }
 
 
@@ -52,9 +68,11 @@ func TestMetaDataToStringSlice(t *testing.T) {
 
 	ss := metadata.ToStringSlice()
 
-	expected_ss := []string{ "Klantsmurfen", "Nibnab"}
+	expected_ss := []string{"Klantsmurfen", "Nibnab"}
 	if !reflect.DeepEqual(ss, expected_ss) {
 
 		t.Fatalf("Expected ss %#v did not match the actual ss %#v", expected_ss, ss)
 	}
 }
+
+

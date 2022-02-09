@@ -62,7 +62,7 @@ type ReplayMetaDataContent struct {
 	ExtraFlag             uint8 // value is 1 if extra options were modified, or EX/SP/GG characters were used, or KL/JU in the original AC, 0 otherwise
 	SingleOrTeamFlag      uint8 // 1 = single, 2 = team
 	IsPlusRFlag           uint8 // 0 = +R, 1 = AC
-	TimezoneBiasInSec     int32 //
+	TimezoneBiasInSec     int32
 	P1RoundsWon           uint8
 	P2RoundsWon           uint8
 	ProblemBitmask        uint8 // 0b1 = unfinished match 0b10 = disconnect 0b100 = desync
@@ -117,5 +117,3 @@ func GetReplayMetaData(r io.Reader) (ReplayMetaData, error) {
 
 	return metadata, nil
 }
-
-
