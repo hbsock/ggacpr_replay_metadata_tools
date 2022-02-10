@@ -45,8 +45,12 @@ func (md ReplayMetaData) ToStringSlice() []string {
 	var s []string
 
 	s = append(s, md.GetDate().String())
+	s = append(s, strconv.FormatUint(md.Content.P1SteamID, 10) )
+	s = append(s, strconv.FormatUint(md.Content.P2SteamID, 10) )
 	s = append(s, md.Content.GetP1NameStr())
 	s = append(s, md.Content.GetP2NameStr())
+	//s = append(s, md.Content.P1Character)
+	//s = append(s, md.Content.P2Character)
 
 
 	return s

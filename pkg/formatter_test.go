@@ -70,6 +70,8 @@ func TestMetaDataToStringSlice(t *testing.T) {
 
 	expected_ss := []string{
 		"2022-01-27 18:29:58 -0500 UTC-5",
+		"76561198008085514",
+		"76561198011058687",
 		"Klantsmurfen",
 		"Nibnab",
 	}
