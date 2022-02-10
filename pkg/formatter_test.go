@@ -68,7 +68,11 @@ func TestMetaDataToStringSlice(t *testing.T) {
 
 	ss := metadata.ToStringSlice()
 
-	expected_ss := []string{"Klantsmurfen", "Nibnab"}
+	expected_ss := []string{
+		"2022-01-27 18:29:58 -0500 UTC-5",
+		"Klantsmurfen",
+		"Nibnab",
+	}
 	if !reflect.DeepEqual(ss, expected_ss) {
 
 		t.Fatalf("Expected ss %#v did not match the actual ss %#v", expected_ss, ss)
