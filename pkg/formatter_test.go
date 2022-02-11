@@ -76,6 +76,19 @@ func TestMetaDataToStringSlice(t *testing.T) {
 		"Nibnab",
 		"RO",
 		"JA",
+		"0",
+		"1",
+		"0",
+		"2",
+		"0",
+		"0",
+		"124",
+		"6810",
+		"4",
+		"0",
+		"5",
+		"3",
+		"1",
 	}
 	if !reflect.DeepEqual(ss, expected_ss) {
 

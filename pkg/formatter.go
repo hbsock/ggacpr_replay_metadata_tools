@@ -98,6 +98,7 @@ func (e Character) String() string {
 	}
 }
 
+
 func (md ReplayMetaData) ToStringSlice() []string {
 	var s []string
 
@@ -108,6 +109,19 @@ func (md ReplayMetaData) ToStringSlice() []string {
 	s = append(s, md.Content.GetP2NameStr())
 	s = append(s, md.Content.P1Character.String())
 	s = append(s, md.Content.P2Character.String())
+	s = append(s, strconv.FormatUint( uint64(md.Content.ExtraFlag), 10) )
+	s = append(s, strconv.FormatUint( uint64(md.Content.SingleOrTeamFlag), 10) )
+	s = append(s, strconv.FormatUint( uint64(md.Content.IsPlusRFlag), 10) )
+	s = append(s, strconv.FormatUint( uint64(md.Content.P1RoundsWon), 10) )
+	s = append(s, strconv.FormatUint( uint64(md.Content.P2RoundsWon), 10) )
+	s = append(s, strconv.FormatUint( uint64(md.Content.ProblemBitmask), 10) )
+	s = append(s, strconv.FormatUint( uint64(md.Content.Ping), 10) )
+	s = append(s, strconv.FormatUint( uint64(md.Content.MatchDurationInFrames), 10) )
+	s = append(s, strconv.FormatUint( uint64(md.Content.P1Score), 10) )
+	s = append(s, strconv.FormatUint( uint64(md.Content.P2Score), 10) )
+	s = append(s, strconv.FormatUint( uint64(md.Content.P1Rank), 10) )
+	s = append(s, strconv.FormatUint( uint64(md.Content.P2Rank), 10) )
+	s = append(s, strconv.FormatUint( uint64(md.Content.WinnerSide), 10) )
 
 
 	return s
