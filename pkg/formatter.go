@@ -126,3 +126,30 @@ func (md ReplayMetaData) ToStringSlice() []string {
 
 	return s
 }
+
+func GetReplayMetadataHeaders() []string {
+	var headers = [...]string{
+		"date",
+		"p1_steam_id",
+		"p2_steam_id",
+		"p1_name",
+		"p2_name",
+		"p1_character",
+		"p2_character",
+		"extra_flag",
+		"single_or_team_flag",
+		"is_plus_r_flag",
+		"p1_rounds_won",
+		"p2_rounds_won",
+		"problem_bitmask",
+		"ping",
+		"match_duration_in_frames",
+		"p1_score",
+		"p2_score",
+		"p1_rank",
+		"p2_rank",
+		"winner_side",
+	}
+
+	return headers[:]
+}

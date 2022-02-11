@@ -97,3 +97,10 @@ func TestMetaDataToStringSlice(t *testing.T) {
 }
 
 
+func TestMetaDataToHeaders(t *testing.T) {
+	headers := GetReplayMetadataHeaders()
+	expected_len := 20
+	if (len(headers) != expected_len) {
+		t.Fatalf("Expected length of headers is %v", expected_len)
+	}
+}
