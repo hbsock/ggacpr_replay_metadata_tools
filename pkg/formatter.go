@@ -22,10 +22,10 @@ func (c ReplayMetaDataContent) GetP2NameStr() string {
 func (md ReplayMetaData) GetDate() time.Time {
 	// taking negative Timezone bias since my replays are from EST which is UTC-5 hours, but the parsed value seems to be
 	// positive 5. So I'm guessing the signs are reversed?
-	timezone_bias_in_hours := int(-md.Content.TimezoneBiasInSec) / (60 * 60)
+	timezone_bias_in_secs := int(-md.Content.TimezoneBiasInSec)
 	timezone := time.FixedZone(
-		"UTC" + strconv.Itoa(timezone_bias_in_hours),
-		int(-md.Content.TimezoneBiasInSec),
+		"UTC" + strconv.Itoa(timezone_bias_in_secs / (60 * 60) ),
+		timezone_bias_in_secs,
 	)
 
 
@@ -41,6 +41,63 @@ func (md ReplayMetaData) GetDate() time.Time {
 	)
 }
 
+func (e Character) String() string {
+	switch e {
+	case SO:
+		return "SO"
+	case KY:
+		return "KY"
+	case MA:
+		return "MA"
+	case MI:
+		return "MI"
+	case AX:
+		return "AX"
+	case PO:
+		return "PO"
+	case CH:
+		return "CH"
+	case ED:
+		return "ED"
+	case BA:
+		return "BA"
+	case FA:
+		return "FA"
+	case TE:
+		return "TE"
+	case JA:
+		return "JA"
+	case AN:
+		return "AN"
+	case JO:
+		return "JO"
+	case VE:
+		return "VE"
+	case DI:
+		return "DI"
+	case SL:
+		return "SL"
+	case IN:
+		return "IN"
+	case ZA:
+		return "ZA"
+	case BR:
+		return "BR"
+	case RO:
+		return "RO"
+	case AB:
+		return "AB"
+	case OS:
+		return "OS"
+	case KL:
+		return "KL"
+	case JU:
+		return "JU"
+	default:
+		return ""
+	}
+}
+
 func (md ReplayMetaData) ToStringSlice() []string {
 	var s []string
 
@@ -49,8 +106,8 @@ func (md ReplayMetaData) ToStringSlice() []string {
 	s = append(s, strconv.FormatUint(md.Content.P2SteamID, 10) )
 	s = append(s, md.Content.GetP1NameStr())
 	s = append(s, md.Content.GetP2NameStr())
-	//s = append(s, md.Content.P1Character)
-	//s = append(s, md.Content.P2Character)
+	s = append(s, md.Content.P1Character.String())
+	s = append(s, md.Content.P2Character.String())
 
 
 	return s
