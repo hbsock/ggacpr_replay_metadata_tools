@@ -2,8 +2,8 @@ package metadata
 
 import (
 	"bytes"
-	"time"
 	"strconv"
+	"time"
 )
 
 func _GetStringFromBytes(b []byte) string {
@@ -24,10 +24,9 @@ func (md ReplayMetaData) GetDate() time.Time {
 	// positive 5. So I'm guessing the signs are reversed?
 	timezone_bias_in_secs := int(-md.Content.TimezoneBiasInSec)
 	timezone := time.FixedZone(
-		"UTC" + strconv.Itoa(timezone_bias_in_secs / (60 * 60) ),
+		"UTC"+strconv.Itoa(timezone_bias_in_secs/(60*60)),
 		timezone_bias_in_secs,
 	)
-
 
 	return time.Date(
 		int(md.Date.Year),
@@ -98,31 +97,29 @@ func (e Character) String() string {
 	}
 }
 
-
 func (md ReplayMetaData) ToStringSlice() []string {
 	var s []string
 
 	s = append(s, md.GetDate().String())
-	s = append(s, strconv.FormatUint(md.Content.P1SteamID, 10) )
-	s = append(s, strconv.FormatUint(md.Content.P2SteamID, 10) )
+	s = append(s, strconv.FormatUint(md.Content.P1SteamID, 10))
+	s = append(s, strconv.FormatUint(md.Content.P2SteamID, 10))
 	s = append(s, md.Content.GetP1NameStr())
 	s = append(s, md.Content.GetP2NameStr())
 	s = append(s, md.Content.P1Character.String())
 	s = append(s, md.Content.P2Character.String())
-	s = append(s, strconv.FormatUint( uint64(md.Content.ExtraFlag), 10) )
-	s = append(s, strconv.FormatUint( uint64(md.Content.SingleOrTeamFlag), 10) )
-	s = append(s, strconv.FormatUint( uint64(md.Content.IsPlusRFlag), 10) )
-	s = append(s, strconv.FormatUint( uint64(md.Content.P1RoundsWon), 10) )
-	s = append(s, strconv.FormatUint( uint64(md.Content.P2RoundsWon), 10) )
-	s = append(s, strconv.FormatUint( uint64(md.Content.ProblemBitmask), 10) )
-	s = append(s, strconv.FormatUint( uint64(md.Content.Ping), 10) )
-	s = append(s, strconv.FormatUint( uint64(md.Content.MatchDurationInFrames), 10) )
-	s = append(s, strconv.FormatUint( uint64(md.Content.P1Score), 10) )
-	s = append(s, strconv.FormatUint( uint64(md.Content.P2Score), 10) )
-	s = append(s, strconv.FormatUint( uint64(md.Content.P1Rank), 10) )
-	s = append(s, strconv.FormatUint( uint64(md.Content.P2Rank), 10) )
-	s = append(s, strconv.FormatUint( uint64(md.Content.WinnerSide), 10) )
-
+	s = append(s, strconv.FormatUint(uint64(md.Content.ExtraFlag), 10))
+	s = append(s, strconv.FormatUint(uint64(md.Content.SingleOrTeamFlag), 10))
+	s = append(s, strconv.FormatUint(uint64(md.Content.IsPlusRFlag), 10))
+	s = append(s, strconv.FormatUint(uint64(md.Content.P1RoundsWon), 10))
+	s = append(s, strconv.FormatUint(uint64(md.Content.P2RoundsWon), 10))
+	s = append(s, strconv.FormatUint(uint64(md.Content.ProblemBitmask), 10))
+	s = append(s, strconv.FormatUint(uint64(md.Content.Ping), 10))
+	s = append(s, strconv.FormatUint(uint64(md.Content.MatchDurationInFrames), 10))
+	s = append(s, strconv.FormatUint(uint64(md.Content.P1Score), 10))
+	s = append(s, strconv.FormatUint(uint64(md.Content.P2Score), 10))
+	s = append(s, strconv.FormatUint(uint64(md.Content.P1Rank), 10))
+	s = append(s, strconv.FormatUint(uint64(md.Content.P2Rank), 10))
+	s = append(s, strconv.FormatUint(uint64(md.Content.WinnerSide), 10))
 
 	return s
 }

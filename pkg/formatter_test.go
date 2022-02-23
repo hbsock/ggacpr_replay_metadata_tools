@@ -57,11 +57,10 @@ func TestMetaDataToDate(t *testing.T) {
 	v_timezone := time.FixedZone("EST", -18000)
 	v_expected_time := time.Date(2022, 1, 27, 18, 29, 58, 0, v_timezone)
 
-	if !v_time.Equal( v_expected_time ) {
+	if !v_time.Equal(v_expected_time) {
 		t.Fatalf("Time %v did not match the expected time %v", v_time, v_expected_time)
 	}
 }
-
 
 func TestMetaDataToStringSlice(t *testing.T) {
 	metadata := _GetTestData()
@@ -96,11 +95,10 @@ func TestMetaDataToStringSlice(t *testing.T) {
 	}
 }
 
-
 func TestMetaDataToHeaders(t *testing.T) {
 	headers := GetReplayMetadataHeaders()
 	expected_len := 20
-	if (len(headers) != expected_len) {
+	if len(headers) != expected_len {
 		t.Fatalf("Expected length of headers is %v", expected_len)
 	}
 }
