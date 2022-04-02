@@ -1,7 +1,7 @@
 package metadata
 
 import (
-	"hbsock/ggacpr_replay_metadata_tools/internal/projectpath"
+	"github.com/hbsock/ggacpr_replay_metadata_tools/internal/projectpath"
 	"os"
 	"path/filepath"
 	"testing"

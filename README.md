@@ -7,3 +7,8 @@
 ```
 go test ./...
 ```
+
+## Install
+```
+go get -u github.com/hbsock/ggacpr_replay_metadata_tools
+```
